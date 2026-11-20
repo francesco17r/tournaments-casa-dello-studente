@@ -1,6 +1,6 @@
 # House Tournaments – Casa dello Studente
 
-Website for the foosball, table tennis and chess tournaments for Casa dello Studente residents.
+Website for the table football, table tennis and chess tournaments for Casa dello Studente residents.
 
 - `index.html`: public site (schedule, groups, brackets, rules)
 - `admin.html`: organiser page (sign-ups, draw, results). Saving needs a fine-grained GitHub token with "Contents: Read and write" on this repository; the token stays in the organiser's browser.
