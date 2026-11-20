@@ -1,6 +1,6 @@
 {
   "aggiornato": "2026-11-20T18:00:00+01:00",
-  "linkIscrizioni": "",
+  "linkIscrizioni": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=K3EXCvNtXUKAjjCd8ope63cGdEtNxKZCnbk3gRao-mRUMloyRUhGWDNINkJJWU9HQlI2Sk80RlkxNS4u",
   "contatto": "Francesco Ram (residents' representative)",
   "calendario": {
     "aperturaIscrizioni": "2026-11-23",
@@ -16,7 +16,10 @@
       "iscritti": [],
       "gironi": [],
       "eliminazione": null,
-      "scadenze": { "gironi": "2026-12-10", "eliminazione": [] }
+      "scadenze": {
+        "gironi": "2026-12-10",
+        "eliminazione": []
+      }
     },
     "pingpong": {
       "fase": "iscrizioni",
@@ -24,7 +27,10 @@
       "iscritti": [],
       "gironi": [],
       "eliminazione": null,
-      "scadenze": { "gironi": "2026-12-10", "eliminazione": [] }
+      "scadenze": {
+        "gironi": "2026-12-10",
+        "eliminazione": []
+      }
     },
     "scacchi": {
       "fase": "iscrizioni",
@@ -32,7 +38,10 @@
       "iscritti": [],
       "gironi": [],
       "eliminazione": null,
-      "scadenze": { "gironi": "2026-12-10", "eliminazione": [] }
+      "scadenze": {
+        "gironi": "2026-12-10",
+        "eliminazione": []
+      }
     }
   }
 }
