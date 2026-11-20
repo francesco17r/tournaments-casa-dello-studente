@@ -1,0 +1,38 @@
+{
+  "aggiornato": "2026-11-20T18:00:00+01:00",
+  "linkIscrizioni": "",
+  "contatto": "Francesco Ram (residents' representative)",
+  "calendario": {
+    "aperturaIscrizioni": "2026-11-23",
+    "chiusuraIscrizioni": "2026-11-29",
+    "sorteggio": "2026-11-30",
+    "fineGironi": "2026-12-10",
+    "finali": "2026-12-20"
+  },
+  "giochi": {
+    "biliardino": {
+      "fase": "iscrizioni",
+      "formato": "gironi",
+      "iscritti": [],
+      "gironi": [],
+      "eliminazione": null,
+      "scadenze": { "gironi": "2026-12-10", "eliminazione": [] }
+    },
+    "pingpong": {
+      "fase": "iscrizioni",
+      "formato": "gironi",
+      "iscritti": [],
+      "gironi": [],
+      "eliminazione": null,
+      "scadenze": { "gironi": "2026-12-10", "eliminazione": [] }
+    },
+    "scacchi": {
+      "fase": "iscrizioni",
+      "formato": "automatico",
+      "iscritti": [],
+      "gironi": [],
+      "eliminazione": null,
+      "scadenze": { "gironi": "2026-12-10", "eliminazione": [] }
+    }
+  }
+}
