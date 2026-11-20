@@ -226,7 +226,7 @@
     if (g.fase === 'iscrizioni') {
       var righe = (g.iscritti || []).map(function (e) { return e.nome; }).join('\n');
       h += '<section class="card stack"><h3>Players</h3>' +
-        '<p class="muted">One team name or nickname per line. Use only team names or nicknames here, never real names: this data is public on the website.' +
+        '<p class="muted">One entry per line: the team name or nickname given in the form. If someone left it blank, write first name + surname initial (e.g. "Marco R."). Never write full names: this data is public on the website.' +
         (k === 'biliardino' ? ' Players without a team name or partner: write their nickname alone and they are paired at random at the draw (shown as "Nick + Nick").' : '') + '</p>' +
         '<label for="iscritti-' + k + '">List<textarea id="iscritti-' + k + '" data-iscritti="' + k + '" placeholder="' + (k === 'biliardino' ? 'Goal Diggers\nThe Wall\nNick1' : 'Pongasaurus\nSmash Bro\nNet Ninja') + '">' + esc(righe) + '</textarea></label>' +
         '<p class="muted" id="conteggio-' + k + '">' + conteggio(k, g) + '</p></section>';
