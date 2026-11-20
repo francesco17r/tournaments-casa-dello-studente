@@ -41,6 +41,7 @@
       <h3>General rules</h3>
       <ul>
         <li>Only residents of Casa dello Studente can take part. Entry is free.</li>
+        <li>You can play in more than one tournament: fill in the sign-up form once for each tournament you want to join.</li>
         <li>After the draw, opponents agree on a day and time for their match between themselves.</li>
         <li>Matches are played in the common areas during the hours allowed by the residence. Don't hold the tables longer than needed, and leave them tidy.</li>
         <li>Every match must be played before the deadline shown on this site. Group matches can be played in any order.</li>
@@ -116,7 +117,7 @@
   function homeHtml() {
     var cal = dati.calendario, t = oggi();
     var tappe = [
-      { da: cal.aperturaIscrizioni, a: cal.chiusuraIscrizioni, titolo: 'Sign-up', testo: 'Sign up for one, two or all three tournaments.' },
+      { da: cal.aperturaIscrizioni, a: cal.chiusuraIscrizioni, titolo: 'Sign-up', testo: 'Sign up for one, two or all three tournaments: one form per tournament.' },
       { da: cal.sorteggio, a: cal.sorteggio, titolo: 'Draw', testo: 'Groups and matches are published here on the site.' },
       { da: cal.sorteggio, a: cal.fineGironi, titolo: 'Group stage', testo: 'Everyone plays their group matches when they like, in any order.' },
       { da: addGiorni(cal.fineGironi, 1), a: cal.finali, titolo: 'Knockout stage', testo: 'The top 2 of each group, with a deadline for each round.' },
@@ -150,7 +151,7 @@
     h += '</ol></div></section>';
 
     h += '<section class="stack"><h2>How it works</h2><div class="card"><ol class="timeline">' +
-      passo('1', 'Sign up', 'By ' + T.dataLunga(cal.chiusuraIscrizioni) + '. For table football you can sign up with a partner or on your own.') +
+      passo('1', 'Sign up', 'By ' + T.dataLunga(cal.chiusuraIscrizioni) + '. Fill in the sign-up form once for each tournament you want to play. For table football you can sign up with a partner or on your own.') +
       passo('2', 'Check the draw', 'Find your group and your opponents on the page of your game.') +
       passo('3', 'Contact your opponent', 'Message each other and pick a day and time that works for both of you.') +
       passo('4', 'Play before the deadline', 'The deadline is shown next to each match.') +

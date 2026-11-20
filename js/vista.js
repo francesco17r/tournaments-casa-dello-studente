@@ -174,9 +174,9 @@
 
   function bottoneIscrizione(dati) {
     if (dati.linkIscrizioni) {
-      return '<div><a class="btn" style="background:var(--accent);color:var(--accent-ink);border-color:var(--accent)" href="' + esc(dati.linkIscrizioni) + '" target="_blank" rel="noopener">Sign up</a></div>';
+      return '<div><a class="btn" style="background:var(--accent);color:var(--accent-ink);border-color:var(--accent)" href="' + esc(dati.linkIscrizioni) + '" target="_blank" rel="noopener">Sign up</a></div><p class="muted">One form per tournament: if you want to play more than one, fill it in once for each.</p>';
     }
-    return '<p class="muted">To sign up, message ' + esc(dati.contatto || 'the organiser') + ' with your name, room number and game.</p>';
+    return '<p class="muted">To sign up, message ' + esc(dati.contatto || 'the organiser') + ' with your name, room number and game. Sign up once for each tournament you want to join.</p>';
   }
 
   root.Vista = {
