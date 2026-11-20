@@ -147,7 +147,7 @@
 
     if (g.fase === 'iscrizioni') {
       var cal = dati.calendario || {};
-      h += '<div class="card stack"><h3>Sign-up open until ' + esc(T.dataLunga(cal.chiusuraIscrizioni)) + '</h3>' +
+      h += '<div class="card stack"><h3>Sign-up open until ' + esc(T.dataLunga(cal.chiusuraIscrizioni)) + ' at 23:59</h3>' +
         '<p>The draw takes place on ' + esc(T.dataLunga(cal.sorteggio)) + '. ' +
         (gioco === 'biliardino' ? 'Sign up with a partner or on your own: players on their own are paired at random.' : '') + '</p>' +
         bottoneIscrizione(dati) + '</div>';

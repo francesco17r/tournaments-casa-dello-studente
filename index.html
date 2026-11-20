@@ -132,11 +132,11 @@
     h += '</div>';
 
     if (t <= cal.chiusuraIscrizioni) {
-      h += '<div class="card stack"><h3>Sign-up open until ' + esc(T.dataLunga(cal.chiusuraIscrizioni)) + '</h3>' + V.bottoneIscrizione(dati) + '</div>';
+      h += '<div class="card stack"><h3>Sign-up open until ' + esc(T.dataLunga(cal.chiusuraIscrizioni)) + ' at 23:59</h3>' + V.bottoneIscrizione(dati) + '</div>';
     }
 
     h += '<section class="stack"><h2>How it works</h2><div class="card"><ol class="timeline">' +
-      passo('1', 'Sign up', 'By ' + T.dataLunga(cal.chiusuraIscrizioni) + '. Fill in the sign-up form once for each tournament you want to play. For table football you can sign up with a partner or on your own.') +
+      passo('1', 'Sign up', 'By ' + T.dataLunga(cal.chiusuraIscrizioni) + ' at 23:59. Fill in the sign-up form once for each tournament you want to play. For table football you can sign up with a partner or on your own.') +
       passo('2', 'Check the draw', 'Find your group and your opponents on the page of your game.') +
       passo('3', 'Contact your opponent', 'Message each other and pick a day and time that works for both of you.') +
       passo('4', 'Play before the deadline', 'The deadline is shown next to each match.') +
