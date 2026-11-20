@@ -5,7 +5,7 @@
 
   var META = {
     biliardino: { nome: 'Table football', colore: 'var(--biliardino)', formula: '2 vs 2', unita: 'goals', descr: 'Teams of two, first to 10 goals' },
-    pingpong: { nome: 'Table tennis', colore: 'var(--pingpong)', formula: '1 vs 1', unita: 'sets', descr: 'Singles, best of 3 sets to 11' },
+    pingpong: { nome: 'Ping pong', colore: 'var(--pingpong)', formula: '1 vs 1', unita: 'sets', descr: 'Singles, best of 3 sets to 11' },
     scacchi: { nome: 'Chess', colore: 'var(--scacchi)', formula: '1 vs 1', unita: 'points', descr: '15 minutes each + 10 seconds per move' }
   };
 
