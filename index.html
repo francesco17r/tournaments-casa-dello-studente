@@ -117,13 +117,6 @@
 
   function homeHtml() {
     var cal = dati.calendario, t = oggi();
-    var tappe = [
-      { da: cal.aperturaIscrizioni, a: cal.chiusuraIscrizioni, titolo: 'Sign-up', testo: 'Sign up for one, two or all three tournaments: one form per tournament.' },
-      { da: cal.sorteggio, a: cal.sorteggio, titolo: 'Draw', testo: 'Groups and matches are published here on the site.' },
-      { da: cal.sorteggio, a: cal.fineGironi, titolo: 'Group stage', testo: 'Everyone plays their group matches when they like, in any order.' },
-      { da: addGiorni(cal.fineGironi, 1), a: cal.finali, titolo: 'Knockout stage', testo: 'The top 2 of each group, with a deadline for each round.' },
-      { da: cal.finali, a: cal.finali, titolo: 'End of the tournaments', testo: 'Last day for the finals and for chess round robin games.' }
-    ];
     var h = '<div class="stack-lg">';
 
     h += '<div class="grid">';
@@ -141,15 +134,6 @@
     if (t <= cal.chiusuraIscrizioni) {
       h += '<div class="card stack"><h3>Sign-up open until ' + esc(T.dataLunga(cal.chiusuraIscrizioni)) + '</h3>' + V.bottoneIscrizione(dati) + '</div>';
     }
-
-    h += '<section class="stack"><h2>Schedule</h2><div class="card"><ol class="timeline">';
-    tappe.forEach(function (p) {
-      var ora = t >= p.da && t <= p.a;
-      var quando = p.da === p.a ? T.dataBreve(p.da) : T.dataBreve(p.da) + ' – ' + T.dataBreve(p.a);
-      h += '<li' + (ora ? ' class="now"' : '') + '><span class="when">' + esc(quando) + '</span><div><strong>' + esc(p.titolo) + '</strong>' +
-        (ora ? ' <span class="chip live">now</span>' : '') + '<p class="muted">' + esc(p.testo) + '</p></div></li>';
-    });
-    h += '</ol></div></section>';
 
     h += '<section class="stack"><h2>How it works</h2><div class="card"><ol class="timeline">' +
       passo('1', 'Sign up', 'By ' + T.dataLunga(cal.chiusuraIscrizioni) + '. Fill in the sign-up form once for each tournament you want to play. For table football you can sign up with a partner or on your own.') +
