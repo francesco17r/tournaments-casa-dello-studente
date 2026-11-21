@@ -226,10 +226,11 @@
     if (g.fase === 'iscrizioni') {
       var righe = (g.iscritti || []).map(function (e) { return e.nome; }).join('\n');
       h += '<section class="card stack"><h3>Players</h3>' +
-        '<p class="muted">One entry per line: the team name or nickname if given, otherwise the player's name. This list is shown on the public website, so never add room numbers or contact details.' +
+        '<p class="muted">One entry per line: the team name or nickname if given, otherwise the player\'s name. This list is shown on the public website, so never add room numbers or contact details.' +
         (k === 'biliardino' ? ' Players without a team name or partner: write their nickname alone and they are paired at random at the draw (shown as "Nick + Nick").' : '') + '</p>' +
         '<label for="iscritti-' + k + '">List<textarea id="iscritti-' + k + '" data-iscritti="' + k + '" placeholder="' + (k === 'biliardino' ? 'Goal Diggers\nThe Wall\nNick1' : 'Pongasaurus\nSmash Bro\nNet Ninja') + '">' + esc(righe) + '</textarea></label>' +
-        '<p class="muted" id="conteggio-' + k + '">' + conteggio(k, g) + '</p></section>';
+        '<p class="muted" id="conteggio-' + k + '">' + conteggio(k, g) + '</p>' +
+        '<div class="form-grid"><label for="num-' + k + '">Sign-ups shown on the site (used while the list above is empty)<input type="number" min="0" inputmode="numeric" id="num-' + k + '" data-num="' + k + '" value="' + esc(g.numeroIscritti || 0) + '"></label></div></section>';
 
       h += '<section class="card stack"><h3>Format and draw</h3><div class="form-grid">' +
         '<label for="formato-' + k + '">Format<select id="formato-' + k + '" data-formato="' + k + '">' +
@@ -396,6 +397,7 @@
 
   document.addEventListener('change', function (ev) {
     var el = ev.target, k = tabAttivo();
+    if (el.dataset.num) { dati.giochi[el.dataset.num].numeroIscritti = Number(el.value) || 0; return segnaModifica(); }
     if (el.dataset.formato) { dati.giochi[el.dataset.formato].formato = el.value; segnaModifica(); return render(); }
     if (el.dataset.ris) {
       var p = el.dataset.ris.split(':'), lato = p.pop();

@@ -126,7 +126,7 @@
         '<div class="row" style="justify-content:space-between"><div class="row" style="gap:8px"><span class="dot"></span><h3>' + esc(m.nome) + '</h3></div>' +
         '<span class="chip ' + s.cls + '">' + esc(s.testo) + '</span></div>' +
         '<p class="muted">' + esc(m.formula) + ' · ' + esc(m.descr) + '</p>' +
-        (c ? '<p><strong>' + esc(n[c]) + '</strong></p>' : '<p class="muted" style="font-size:.85rem">' + (g.iscritti || []).length + ' signed up</p>') +
+        (c ? '<p><strong>' + esc(n[c]) + '</strong></p>' : '<p class="muted" style="font-size:.85rem">' + V.numIscritti(g) + ' signed up</p>') +
         '</a>';
     });
     h += '</div>';

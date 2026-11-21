@@ -32,6 +32,12 @@
     return String(v);
   }
 
+  // Numero di iscritti: dall'elenco nomi se c'è, altrimenti dal conteggio inserito a mano.
+  function numIscritti(g) {
+    var n = (g.iscritti || []).length;
+    return n || Number(g.numeroIscritti) || 0;
+  }
+
   function formatoEffettivo(g) {
     if (g.formatoUsato) return g.formatoUsato;
     if (g.formato === 'automatico') return (g.iscritti || []).length <= 8 ? 'girone-unico' : 'gironi';
@@ -148,6 +154,7 @@
     if (g.fase === 'iscrizioni') {
       var cal = dati.calendario || {};
       h += '<div class="card stack"><h3>Sign-up open until ' + esc(T.dataLunga(cal.chiusuraIscrizioni)) + ' at 23:59</h3>' +
+        '<p><strong>' + numIscritti(g) + '</strong> signed up so far.</p>' +
         '<p>The draw takes place on ' + esc(T.dataLunga(cal.sorteggio)) + '. ' +
         (gioco === 'biliardino' ? 'Sign up with a partner or on your own: players on their own are paired at random.' : '') + '</p>' +
         bottoneIscrizione(dati) + '</div>';
@@ -181,7 +188,7 @@
 
   root.Vista = {
     META: META, esc: esc, nomi: nomi, fmtPunti: fmtPunti, fmtRis: fmtRis,
-    formatoEffettivo: formatoEffettivo, statoGioco: statoGioco, tabellaClassifica: tabellaClassifica,
+    formatoEffettivo: formatoEffettivo, numIscritti: numIscritti, statoGioco: statoGioco, tabellaClassifica: tabellaClassifica,
     giocoHtml: giocoHtml, gironiHtml: gironiHtml, tabelloneHtml: tabelloneHtml,
     bottoneIscrizione: bottoneIscrizione
   };
