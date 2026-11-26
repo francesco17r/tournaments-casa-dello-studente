@@ -25,6 +25,8 @@
   function formaCoppie(righe) {
     var coppie = [], singoli = [];
     righe.forEach(function (r) {
+      var pronta = r.match(/^(.*?)\s*\(team\)\s*$/i);
+      if (pronta && pronta[1]) { coppie.push(pronta[1].trim()); return; }
       var parti = r.split('+').map(function (s) { return s.trim(); }).filter(Boolean);
       if (parti.length >= 2) coppie.push(parti.join(' + '));
       else if (parti.length === 1) singoli.push(parti[0]);
@@ -38,7 +40,8 @@
 
   /* ---------- Gironi ---------- */
 
-  function numeroGironi(n, formato) {
+  function numeroGironi(n, formato, forzato) {
+    if (forzato) return forzato;
     if (formato === 'girone-unico' || n <= 5) return 1;
     return Math.ceil(n / 4);
   }
@@ -58,14 +61,37 @@
     return partite;
   }
 
-  function sorteggiaGironi(ids, formato) {
+  function sorteggiaGironi(ids, formato, nGironi) {
     var mescolati = shuffle(ids);
-    var g = numeroGironi(ids.length, formato);
+    var g = numeroGironi(ids.length, formato, nGironi);
     var gironi = [];
     for (var i = 0; i < g; i++) gironi.push({ nome: String.fromCharCode(65 + i), membri: [] });
     mescolati.forEach(function (id, i) { gironi[i % g].membri.push(id); });
     gironi.forEach(function (gr) { gr.partite = calendarioGirone(gr.membri, gr.nome); });
     return gironi;
+  }
+
+  // Girone unico in cui ogni squadra gioca solo "perSquadra" partite contro avversari sorteggiati.
+  function sorteggiaCampionato(ids, perSquadra) {
+    var n = ids.length, d = perSquadra;
+    if (d >= n || (n * d) % 2 === 1) throw new Error('Impossibile: ' + n + ' squadre con ' + d + ' avversari ciascuna');
+    var coppie = [];
+    for (var i = 0; i < n; i++) for (var j = i + 1; j < n; j++) coppie.push([ids[i], ids[j]]);
+    for (var tent = 0; tent < 5000; tent++) {
+      var grado = {}; ids.forEach(function (id) { grado[id] = 0; });
+      var scelte = [];
+      shuffle(coppie).forEach(function (c) {
+        if (grado[c[0]] < d && grado[c[1]] < d) { grado[c[0]]++; grado[c[1]]++; scelte.push(c); }
+      });
+      if (ids.every(function (id) { return grado[id] === d; })) {
+        var partite = shuffle(scelte).map(function (c, k) {
+          var inv = Math.random() < 0.5;
+          return { id: 'A' + (k + 1), a: inv ? c[1] : c[0], b: inv ? c[0] : c[1], ra: null, rb: null };
+        });
+        return [{ nome: 'A', membri: ids.slice(), partite: partite }];
+      }
+    }
+    throw new Error('Sorteggio non riuscito, riprova');
   }
 
   function giocata(p) {
@@ -75,7 +101,7 @@
   // Punti in classifica: scacchi = punti partita (1, ½, 0); altri = 3 per vittoria.
   function puntiPartita(gioco, mio, suo) {
     if (gioco === 'scacchi') return mio;
-    return mio > suo ? 3 : 0;
+    return mio > suo ? 1 : 0;
   }
 
   function classifica(gioco, girone) {
@@ -143,33 +169,43 @@
     return o;
   }
 
-  // Dai gironi: primi e secondi qualificati, tabellone con bye e senza scontri tra squadre dello stesso girone al primo turno.
-  function creaEliminazione(gioco, gironi) {
+  // Dai gironi: i primi "q" di ogni girone. Girone unico: teste di serie in ordine di classifica.
+  // Più gironi (q = 2): primi e secondi, senza scontri dello stesso girone al primo turno.
+  function creaEliminazione(gioco, gironi, q) {
+    q = q || 2;
+    var size, posti, migliore;
+    if (gironi.length === 1) {
+      var cl = classifica(gioco, gironi[0]).slice(0, q).map(function (r) { return r.id; });
+      size = 1; while (size < cl.length) size *= 2;
+      posti = ordineTeste(size).map(function (sd) { return cl[sd - 1] || null; });
+      var pt = [];
+      for (var k = 0; k < posti.length; k += 2) pt.push([posti[k], posti[k + 1]]);
+      return { primoTurno: pt, risultati: {} };
+    }
     var primi = [], secondi = [];
     gironi.forEach(function (g) {
       var c = classifica(gioco, g);
       if (c[0]) primi.push({ id: c[0].id, girone: g.nome });
       if (c[1]) secondi.push({ id: c[1].id, girone: g.nome });
     });
-    var q = primi.length + secondi.length;
-    var size = 1; while (size < q) size *= 2;
+    var tot = primi.length + secondi.length;
+    size = 1; while (size < tot) size *= 2;
     var ordine = ordineTeste(size);
-    var migliore = null;
+    migliore = null;
     for (var tentativo = 0; tentativo < 300; tentativo++) {
       var teste = shuffle(primi).concat(shuffle(secondi));
-      var posti = ordine.map(function (s) { return teste[s - 1] || null; });
+      var pp = ordine.map(function (sd) { return teste[sd - 1] || null; });
       var conflitti = 0;
-      for (var i = 0; i < posti.length; i += 2) {
-        if (posti[i] && posti[i + 1] && posti[i].girone === posti[i + 1].girone) conflitti++;
+      for (var x = 0; x < pp.length; x += 2) {
+        if (pp[x] && pp[x + 1] && pp[x].girone === pp[x + 1].girone) conflitti++;
       }
-      if (!migliore || conflitti < migliore.c) migliore = { posti: posti, c: conflitti };
+      if (!migliore || conflitti < migliore.c) migliore = { posti: pp, c: conflitti };
       if (conflitti === 0) break;
     }
     var primoTurno = [];
-    for (var j = 0; j < migliore.posti.length; j += 2) {
-      primoTurno.push([migliore.posti[j] ? migliore.posti[j].id : null, migliore.posti[j + 1] ? migliore.posti[j + 1].id : null]);
+    for (var y = 0; y < migliore.posti.length; y += 2) {
+      primoTurno.push([migliore.posti[y] ? migliore.posti[y].id : null, migliore.posti[y + 1] ? migliore.posti[y + 1].id : null]);
     }
-    if (size === 1) primoTurno = [[migliore.posti[0] ? migliore.posti[0].id : null, null]];
     return { primoTurno: primoTurno, risultati: {} };
   }
 
@@ -278,7 +314,7 @@
     shuffle: shuffle, uid: uid,
     formaCoppie: formaCoppie,
     numeroGironi: numeroGironi,
-    sorteggiaGironi: sorteggiaGironi,
+    sorteggiaGironi: sorteggiaGironi, sorteggiaCampionato: sorteggiaCampionato,
     classifica: classifica,
     giocata: giocata,
     partiteMancanti: partiteMancanti,

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
-<link rel="stylesheet" href="css/style.css?v=20261121a">
+<link rel="stylesheet" href="css/style.css?v=20261126b">
 </head>
 <body>
 <header class="top">
@@ -47,18 +47,19 @@
         <li>Matches are played in the common areas during the hours allowed by the residence. Don't hold the tables longer than needed, and leave them tidy.</li>
         <li>Every match must be played before the deadline shown on this site. Group matches can be played in any order.</li>
         <li>Right after the match, both players send the result to the organiser, or one of them sends a photo of the score.</li>
-        <li>If someone doesn't show up or doesn't reply before the deadline, they lose by forfeit (table football 10–0, ping pong 2–0, chess 1–0). If neither player got in touch, the organiser decides.</li>
+        <li>If someone doesn't show up or doesn't reply before the deadline, they lose by forfeit (table football and ping pong 2–0, chess 1–0). If neither player got in touch, the organiser decides.</li>
         <li>Fair play first: we're here to have fun.</li>
       </ul>
     </div>
 
     <div class="card stack">
-      <h3>Groups and standings</h3>
+      <h3>Formats and standings</h3>
       <ul>
-        <li>Table football and ping pong: groups of 3 or 4, everyone plays everyone. A win is worth 3 points, a loss 0.</li>
-        <li>Chess: with 8 players or fewer there is a single round robin, everyone plays everyone, with time until 20 December. With more players there are groups + knockout, like the other games. A win is worth 1 point, a draw ½, a loss 0.</li>
-        <li>If players are level on points, the head-to-head result decides (when two are tied), then the goal or set difference, then goals or sets scored. In chess, after head-to-head, the number of wins decides.</li>
-        <li>The top 2 of each group go through to the knockout stage. The bracket is drawn so that two players or teams from the same group don't meet in the first round. If some byes are needed, they go to the group winners.</li>
+        <li><strong>Ping pong:</strong> 4 groups of 5 players, everyone plays everyone in their group. A match is best of 3 sets and is worth 1 point to the winner, 0 to the loser. The top 2 of each group go through to the knockout stage.</li>
+        <li><strong>Table football:</strong> one league with all the teams. Each team plays 4 matches against opponents drawn at random by the organiser. A match is best of 3 games and is worth 1 point to the winner. The top 4 teams go through to the knockout stage (semi-finals and final).</li>
+        <li><strong>Chess:</strong> the format will be announced soon.</li>
+        <li>If players or teams are level on points, the head-to-head result decides (when two are tied and have played each other), then the difference between games or sets won and lost, then games or sets won.</li>
+        <li>In the knockout stage every match is best of 3, like in the group stage. In the ping pong bracket, two players from the same group don't meet in the first round.</li>
       </ul>
     </div>
 
@@ -67,7 +68,7 @@
         <div class="row"><span class="dot"></span><h3>Table football</h3></div>
         <ul>
           <li>2 vs 2, with the same partner for the whole tournament.</li>
-          <li>The first team to score 10 goals wins.</li>
+          <li>A game is won by the first team to score 10 goals. A match is best of 3 games.</li>
           <li>No spinning the rods 360°.</li>
           <li>Goals from any rod count.</li>
           <li>After each goal, the team that conceded puts the ball back in play. Partners can swap positions only after a goal.</li>
@@ -76,7 +77,7 @@
       <div class="card stack" style="--c:var(--pingpong)">
         <div class="row"><span class="dot"></span><h3>Ping pong</h3></div>
         <ul>
-          <li>Singles, best of 3 sets.</li>
+          <li>Singles. A match is best of 3 sets.</li>
           <li>Each set goes to 11 points, with a 2-point lead.</li>
           <li>Two serves each. From 10–10, players alternate one serve each.</li>
           <li>If a serve touches the net and lands in the right half, it is replayed.</li>
@@ -90,7 +91,7 @@
           <li>Colours are drawn before the game. Touch a piece, move that piece.</li>
           <li>A player who runs out of time loses, unless the opponent has no pieces left that could checkmate: then it's a draw.</li>
           <li>No phones or other help during the game, apart from the clock.</li>
-          <li>In the knockout stage, a draw is followed by a 5 minutes + 3 seconds tiebreak game with colours reversed, repeated until someone wins.</li>
+          <li>Format and points: to be announced.</li>
         </ul>
       </div>
     </div>
@@ -104,8 +105,8 @@
   </div>
 </footer>
 
-<script src="js/engine.js?v=20261121a"></script>
-<script src="js/vista.js?v=20261121a"></script>
+<script src="js/engine.js?v=20261126b"></script>
+<script src="js/vista.js?v=20261126b"></script>
 <script>
 (function () {
   'use strict';
@@ -121,12 +122,13 @@
 
     h += '<div class="grid">';
     T.GIOCHI.forEach(function (k) {
-      var g = dati.giochi[k], m = V.META[k], s = V.statoGioco(k, g), c = T.campione(k, g), n = V.nomi(g);
-      h += '<a class="card stack" href="#' + k + '" style="--c:' + m.colore + ';text-decoration:none;color:inherit;gap:8px">' +
+      var g = dati.giochi[k], m = V.META[k], s = V.statoGioco(k, g, dati), c = T.campione(k, g), n = V.nomi(g);
+      h += '<a class="card stack game-card" href="#' + k + '" style="--c:' + m.colore + ';text-decoration:none;color:inherit;gap:8px">' +
+        V.banner(k, true) +
         '<div class="row" style="justify-content:space-between"><div class="row" style="gap:8px"><span class="dot"></span><h3>' + esc(m.nome) + '</h3></div>' +
         '<span class="chip ' + s.cls + '">' + esc(s.testo) + '</span></div>' +
         '<p class="muted">' + esc(m.formula) + ' · ' + esc(m.descr) + '</p>' +
-        (c ? '<p><strong>' + esc(n[c]) + '</strong></p>' : '<p class="muted" style="font-size:.85rem">' + (V.numIscritti ? V.numIscritti(g) : (g.iscritti || []).length) + ' signed up</p>') +
+        (c ? '<p><strong>' + esc(n[c]) + '</strong></p>' : '<p class="muted" style="font-size:.85rem">' + progresso(g, k) + '</p>') +
         '</a>';
     });
     h += '</div>';
@@ -144,6 +146,15 @@
       '</ol></div></section>';
 
     return h + '</div>';
+  }
+
+  function progresso(g, k) {
+    if (g.gironi && g.gironi.length) {
+      var tot = 0, fatte = 0;
+      g.gironi.forEach(function (gr) { gr.partite.forEach(function (m) { tot++; if (T.giocata(m)) fatte++; }); });
+      return fatte + ' of ' + tot + ' group matches played';
+    }
+    return V.numIscritti(g) + ' ' + V.unitaIscritti(k) + ' signed up';
   }
 
   function passo(n, titolo, testo) {

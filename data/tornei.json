@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-24T23:06:52.957Z",
+  "aggiornato": "2026-11-26T23:30:00+01:00",
   "linkIscrizioni": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=K3EXCvNtXUKAjjCd8ope63cGdEtNxKZCnbk3gRao-mRUMloyRUhGWDNINkJJWU9HQlI2Sk80RlkxNS4u",
   "contatto": "Francesco Ram (residents' representative)",
   "calendario": {
@@ -12,7 +12,7 @@
   "giochi": {
     "biliardino": {
       "fase": "iscrizioni",
-      "formato": "gironi",
+      "formato": "campionato",
       "iscritti": [],
       "gironi": [],
       "eliminazione": null,
@@ -20,7 +20,9 @@
         "gironi": "2026-12-10",
         "eliminazione": []
       },
-      "numeroIscritti": 6
+      "numeroIscritti": 7,
+      "avversari": 4,
+      "qualificati": 4
     },
     "pingpong": {
       "fase": "iscrizioni",
@@ -32,7 +34,9 @@
         "gironi": "2026-12-10",
         "eliminazione": []
       },
-      "numeroIscritti": 17
+      "numeroIscritti": 20,
+      "numGironi": 4,
+      "qualificati": 2
     },
     "scacchi": {
       "fase": "iscrizioni",
@@ -44,7 +48,7 @@
         "gironi": "2026-12-10",
         "eliminazione": []
       },
-      "numeroIscritti": 17
+      "numeroIscritti": 18
     }
   }
 }
