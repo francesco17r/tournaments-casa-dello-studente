@@ -102,8 +102,8 @@
       var ca = fatta ? (ra > rb ? 'win' : ra < rb ? 'lose' : '') : '';
       var cb = fatta ? (rb > ra ? 'win' : rb < ra ? 'lose' : '') : '';
       h += '<li><span class="a ' + ca + '">' + esc(n[m.a]) + '</span>' +
-        (fatta ? '<span class="score">' + fmtRis(gioco, m.ra) + ' – ' + fmtRis(gioco, m.rb) + '</span>'
-          : '<span class="score pending">' + (scadenza ? 'by ' + T.dataBreve(scadenza) : 'to play') + '</span>') +
+        (fatta ? '<span class="score">' + fmtRis(gioco, m.ra) + ':' + fmtRis(gioco, m.rb) + '</span>'
+          : '<span class="score pending" title="Not played yet">-:-</span>') +
         '<span class="' + cb + '">' + esc(n[m.b]) + '</span></li>';
     });
     return h + '</ul>';

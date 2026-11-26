@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-26T22:11:10.234Z",
+  "aggiornato": "2026-11-26T22:23:21.360Z",
   "linkIscrizioni": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=K3EXCvNtXUKAjjCd8ope63cGdEtNxKZCnbk3gRao-mRUMloyRUhGWDNINkJJWU9HQlI2Sk80RlkxNS4u",
   "contatto": "Francesco Ram (residents' representative)",
   "calendario": {
@@ -16,23 +16,23 @@
       "iscritti": [
         {
           "id": "e1",
-          "nome": "Falcon Blitz"
-        },
-        {
-          "id": "e2",
-          "nome": "MiVi"
-        },
-        {
-          "id": "e3",
-          "nome": "Sonillio Primo"
-        },
-        {
-          "id": "e4",
           "nome": "Siuuuum"
         },
         {
-          "id": "e5",
+          "id": "e2",
+          "nome": "Falcon Blitz"
+        },
+        {
+          "id": "e3",
           "nome": "I cucinati"
+        },
+        {
+          "id": "e4",
+          "nome": "MiVi"
+        },
+        {
+          "id": "e5",
+          "nome": "The Tenacious Table TFootball Team"
         },
         {
           "id": "e6",
@@ -40,7 +40,7 @@
         },
         {
           "id": "e7",
-          "nome": "The Tenacious Table TFootball Team"
+          "nome": "Sonillio Primo"
         }
       ],
       "gironi": [
@@ -58,99 +58,99 @@
           "partite": [
             {
               "id": "A1",
-              "a": "e5",
+              "a": "e6",
               "b": "e4",
               "ra": null,
               "rb": null
             },
             {
               "id": "A2",
-              "a": "e7",
-              "b": "e6",
+              "a": "e6",
+              "b": "e5",
               "ra": null,
               "rb": null
             },
             {
               "id": "A3",
+              "a": "e3",
+              "b": "e2",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A4",
+              "a": "e7",
+              "b": "e2",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A5",
+              "a": "e3",
+              "b": "e7",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A6",
+              "a": "e6",
+              "b": "e1",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A7",
               "a": "e1",
               "b": "e7",
               "ra": null,
               "rb": null
             },
             {
-              "id": "A4",
-              "a": "e5",
-              "b": "e6",
-              "ra": null,
-              "rb": null
-            },
-            {
-              "id": "A5",
-              "a": "e5",
-              "b": "e3",
-              "ra": null,
-              "rb": null
-            },
-            {
-              "id": "A6",
-              "a": "e5",
-              "b": "e2",
-              "ra": null,
-              "rb": null
-            },
-            {
-              "id": "A7",
-              "a": "e2",
-              "b": "e3",
-              "ra": null,
-              "rb": null
-            },
-            {
               "id": "A8",
-              "a": "e2",
-              "b": "e1",
+              "a": "e5",
+              "b": "e3",
               "ra": null,
               "rb": null
             },
             {
               "id": "A9",
-              "a": "e3",
-              "b": "e4",
+              "a": "e4",
+              "b": "e1",
               "ra": null,
               "rb": null
             },
             {
               "id": "A10",
               "a": "e1",
-              "b": "e4",
-              "ra": null,
-              "rb": null
-            },
-            {
-              "id": "A11",
-              "a": "e7",
-              "b": "e4",
-              "ra": null,
-              "rb": null
-            },
-            {
-              "id": "A12",
-              "a": "e6",
               "b": "e3",
               "ra": null,
               "rb": null
             },
             {
+              "id": "A11",
+              "a": "e2",
+              "b": "e5",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A12",
+              "a": "e7",
+              "b": "e4",
+              "ra": null,
+              "rb": null
+            },
+            {
               "id": "A13",
-              "a": "e6",
-              "b": "e1",
+              "a": "e5",
+              "b": "e4",
               "ra": null,
               "rb": null
             },
             {
               "id": "A14",
-              "a": "e7",
-              "b": "e2",
+              "a": "e2",
+              "b": "e6",
               "ra": null,
               "rb": null
             }
@@ -173,71 +173,71 @@
       "iscritti": [
         {
           "id": "e1",
-          "nome": "Maurizio Montemurro"
+          "nome": "Bulzo"
         },
         {
           "id": "e2",
-          "nome": "Alessio Zheng"
+          "nome": "Sleem"
         },
         {
           "id": "e3",
-          "nome": "Michitos"
-        },
-        {
-          "id": "e4",
-          "nome": "Paolo Spinetti"
-        },
-        {
-          "id": "e5",
-          "nome": "The President"
-        },
-        {
-          "id": "e6",
-          "nome": "Fausto Zamparelli"
-        },
-        {
-          "id": "e7",
-          "nome": "Itsumi Shimizu"
-        },
-        {
-          "id": "e8",
-          "nome": "Vibhor Chaturvedi"
-        },
-        {
-          "id": "e9",
-          "nome": "Mo"
-        },
-        {
-          "id": "e10",
-          "nome": "Joel Ping Pong"
-        },
-        {
-          "id": "e11",
-          "nome": "Emanuele Clemente"
-        },
-        {
-          "id": "e12",
           "nome": "Yashrajsinh Zala"
         },
         {
-          "id": "e13",
-          "nome": "Adri"
-        },
-        {
-          "id": "e14",
-          "nome": "Francesco"
-        },
-        {
-          "id": "e15",
+          "id": "e4",
           "nome": "Raluca Teliban"
         },
         {
-          "id": "e16",
+          "id": "e5",
+          "nome": "Azhan Ali"
+        },
+        {
+          "id": "e6",
+          "nome": "Joel Ping Pong"
+        },
+        {
+          "id": "e7",
+          "nome": "The President"
+        },
+        {
+          "id": "e8",
+          "nome": "Fausto Zamparelli"
+        },
+        {
+          "id": "e9",
+          "nome": "Maurizio Montemurro"
+        },
+        {
+          "id": "e10",
           "nome": "Laxmi Narayan Ray"
         },
         {
+          "id": "e11",
+          "nome": "Paolo Spinetti"
+        },
+        {
+          "id": "e12",
+          "nome": "Emanuele Clemente"
+        },
+        {
+          "id": "e13",
+          "nome": "Itsumi Shimizu"
+        },
+        {
+          "id": "e14",
+          "nome": "Vibhor Chaturvedi"
+        },
+        {
+          "id": "e15",
+          "nome": "Francesco"
+        },
+        {
+          "id": "e16",
+          "nome": "Mo"
+        },
+        {
           "id": "e17",
-          "nome": "Sleem"
+          "nome": "Michitos"
         },
         {
           "id": "e18",
@@ -245,91 +245,91 @@
         },
         {
           "id": "e19",
-          "nome": "Bulzo"
+          "nome": "Alessio Zheng"
         },
         {
           "id": "e20",
-          "nome": "Azhan Ali"
+          "nome": "Adri"
         }
       ],
       "gironi": [
         {
           "nome": "A",
           "membri": [
-            "e1",
-            "e2",
-            "e3",
+            "e10",
+            "e13",
+            "e15",
             "e4",
-            "e5"
+            "e18"
           ],
           "partite": [
             {
               "id": "A1",
-              "a": "e2",
-              "b": "e5",
+              "a": "e13",
+              "b": "e18",
               "ra": null,
               "rb": null
             },
             {
               "id": "A2",
-              "a": "e3",
+              "a": "e15",
               "b": "e4",
               "ra": null,
               "rb": null
             },
             {
               "id": "A3",
-              "a": "e1",
-              "b": "e5",
+              "a": "e10",
+              "b": "e18",
               "ra": null,
               "rb": null
             },
             {
               "id": "A4",
-              "a": "e2",
-              "b": "e3",
+              "a": "e13",
+              "b": "e15",
               "ra": null,
               "rb": null
             },
             {
               "id": "A5",
-              "a": "e1",
+              "a": "e10",
               "b": "e4",
               "ra": null,
               "rb": null
             },
             {
               "id": "A6",
-              "a": "e5",
-              "b": "e3",
+              "a": "e18",
+              "b": "e15",
               "ra": null,
               "rb": null
             },
             {
               "id": "A7",
-              "a": "e1",
-              "b": "e3",
+              "a": "e10",
+              "b": "e15",
               "ra": null,
               "rb": null
             },
             {
               "id": "A8",
               "a": "e4",
-              "b": "e2",
+              "b": "e13",
               "ra": null,
               "rb": null
             },
             {
               "id": "A9",
-              "a": "e1",
-              "b": "e2",
+              "a": "e10",
+              "b": "e13",
               "ra": null,
               "rb": null
             },
             {
               "id": "A10",
               "a": "e4",
-              "b": "e5",
+              "b": "e18",
               "ra": null,
               "rb": null
             }
@@ -338,80 +338,80 @@
         {
           "nome": "B",
           "membri": [
-            "e6",
+            "e1",
             "e7",
-            "e8",
-            "e9",
-            "e10"
+            "e16",
+            "e6",
+            "e19"
           ],
           "partite": [
             {
               "id": "B1",
               "a": "e7",
-              "b": "e10",
+              "b": "e19",
               "ra": null,
               "rb": null
             },
             {
               "id": "B2",
-              "a": "e8",
-              "b": "e9",
+              "a": "e16",
+              "b": "e6",
               "ra": null,
               "rb": null
             },
             {
               "id": "B3",
-              "a": "e6",
-              "b": "e10",
+              "a": "e1",
+              "b": "e19",
               "ra": null,
               "rb": null
             },
             {
               "id": "B4",
               "a": "e7",
-              "b": "e8",
+              "b": "e16",
               "ra": null,
               "rb": null
             },
             {
               "id": "B5",
-              "a": "e6",
-              "b": "e9",
+              "a": "e1",
+              "b": "e6",
               "ra": null,
               "rb": null
             },
             {
               "id": "B6",
-              "a": "e10",
-              "b": "e8",
+              "a": "e19",
+              "b": "e16",
               "ra": null,
               "rb": null
             },
             {
               "id": "B7",
-              "a": "e6",
-              "b": "e8",
+              "a": "e1",
+              "b": "e16",
               "ra": null,
               "rb": null
             },
             {
               "id": "B8",
-              "a": "e9",
+              "a": "e6",
               "b": "e7",
               "ra": null,
               "rb": null
             },
             {
               "id": "B9",
-              "a": "e6",
+              "a": "e1",
               "b": "e7",
               "ra": null,
               "rb": null
             },
             {
               "id": "B10",
-              "a": "e9",
-              "b": "e10",
+              "a": "e6",
+              "b": "e19",
               "ra": null,
               "rb": null
             }
@@ -420,80 +420,80 @@
         {
           "nome": "C",
           "membri": [
+            "e2",
             "e11",
-            "e12",
-            "e13",
-            "e14",
-            "e15"
+            "e9",
+            "e8",
+            "e5"
           ],
           "partite": [
             {
               "id": "C1",
-              "a": "e12",
-              "b": "e15",
+              "a": "e11",
+              "b": "e5",
               "ra": null,
               "rb": null
             },
             {
               "id": "C2",
-              "a": "e13",
-              "b": "e14",
+              "a": "e9",
+              "b": "e8",
               "ra": null,
               "rb": null
             },
             {
               "id": "C3",
-              "a": "e11",
-              "b": "e15",
+              "a": "e2",
+              "b": "e5",
               "ra": null,
               "rb": null
             },
             {
               "id": "C4",
-              "a": "e12",
-              "b": "e13",
+              "a": "e11",
+              "b": "e9",
               "ra": null,
               "rb": null
             },
             {
               "id": "C5",
-              "a": "e11",
-              "b": "e14",
+              "a": "e2",
+              "b": "e8",
               "ra": null,
               "rb": null
             },
             {
               "id": "C6",
-              "a": "e15",
-              "b": "e13",
+              "a": "e5",
+              "b": "e9",
               "ra": null,
               "rb": null
             },
             {
               "id": "C7",
-              "a": "e11",
-              "b": "e13",
+              "a": "e2",
+              "b": "e9",
               "ra": null,
               "rb": null
             },
             {
               "id": "C8",
-              "a": "e14",
-              "b": "e12",
+              "a": "e8",
+              "b": "e11",
               "ra": null,
               "rb": null
             },
             {
               "id": "C9",
-              "a": "e11",
-              "b": "e12",
+              "a": "e2",
+              "b": "e11",
               "ra": null,
               "rb": null
             },
             {
               "id": "C10",
-              "a": "e14",
-              "b": "e15",
+              "a": "e8",
+              "b": "e5",
               "ra": null,
               "rb": null
             }
@@ -502,80 +502,80 @@
         {
           "nome": "D",
           "membri": [
-            "e16",
             "e17",
-            "e18",
-            "e19",
-            "e20"
+            "e12",
+            "e20",
+            "e14",
+            "e3"
           ],
           "partite": [
             {
               "id": "D1",
-              "a": "e17",
-              "b": "e20",
+              "a": "e12",
+              "b": "e3",
               "ra": null,
               "rb": null
             },
             {
               "id": "D2",
-              "a": "e18",
-              "b": "e19",
+              "a": "e20",
+              "b": "e14",
               "ra": null,
               "rb": null
             },
             {
               "id": "D3",
-              "a": "e16",
-              "b": "e20",
+              "a": "e17",
+              "b": "e3",
               "ra": null,
               "rb": null
             },
             {
               "id": "D4",
-              "a": "e17",
-              "b": "e18",
+              "a": "e12",
+              "b": "e20",
               "ra": null,
               "rb": null
             },
             {
               "id": "D5",
-              "a": "e16",
-              "b": "e19",
+              "a": "e17",
+              "b": "e14",
               "ra": null,
               "rb": null
             },
             {
               "id": "D6",
-              "a": "e20",
-              "b": "e18",
+              "a": "e3",
+              "b": "e20",
               "ra": null,
               "rb": null
             },
             {
               "id": "D7",
-              "a": "e16",
-              "b": "e18",
+              "a": "e17",
+              "b": "e20",
               "ra": null,
               "rb": null
             },
             {
               "id": "D8",
-              "a": "e19",
-              "b": "e17",
+              "a": "e14",
+              "b": "e12",
               "ra": null,
               "rb": null
             },
             {
               "id": "D9",
-              "a": "e16",
-              "b": "e17",
+              "a": "e17",
+              "b": "e12",
               "ra": null,
               "rb": null
             },
             {
               "id": "D10",
-              "a": "e19",
-              "b": "e20",
+              "a": "e14",
+              "b": "e3",
               "ra": null,
               "rb": null
             }
