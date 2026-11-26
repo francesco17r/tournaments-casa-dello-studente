@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-26T23:30:00+01:00",
+  "aggiornato": "2026-11-26T22:11:10.234Z",
   "linkIscrizioni": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=K3EXCvNtXUKAjjCd8ope63cGdEtNxKZCnbk3gRao-mRUMloyRUhGWDNINkJJWU9HQlI2Sk80RlkxNS4u",
   "contatto": "Francesco Ram (residents' representative)",
   "calendario": {
@@ -11,10 +11,152 @@
   },
   "giochi": {
     "biliardino": {
-      "fase": "iscrizioni",
+      "fase": "gironi",
       "formato": "campionato",
-      "iscritti": [],
-      "gironi": [],
+      "iscritti": [
+        {
+          "id": "e1",
+          "nome": "Falcon Blitz"
+        },
+        {
+          "id": "e2",
+          "nome": "MiVi"
+        },
+        {
+          "id": "e3",
+          "nome": "Sonillio Primo"
+        },
+        {
+          "id": "e4",
+          "nome": "Siuuuum"
+        },
+        {
+          "id": "e5",
+          "nome": "I cucinati"
+        },
+        {
+          "id": "e6",
+          "nome": "I rotoli"
+        },
+        {
+          "id": "e7",
+          "nome": "The Tenacious Table TFootball Team"
+        }
+      ],
+      "gironi": [
+        {
+          "nome": "A",
+          "membri": [
+            "e1",
+            "e2",
+            "e3",
+            "e4",
+            "e5",
+            "e6",
+            "e7"
+          ],
+          "partite": [
+            {
+              "id": "A1",
+              "a": "e5",
+              "b": "e4",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A2",
+              "a": "e7",
+              "b": "e6",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A3",
+              "a": "e1",
+              "b": "e7",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A4",
+              "a": "e5",
+              "b": "e6",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A5",
+              "a": "e5",
+              "b": "e3",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A6",
+              "a": "e5",
+              "b": "e2",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A7",
+              "a": "e2",
+              "b": "e3",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A8",
+              "a": "e2",
+              "b": "e1",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A9",
+              "a": "e3",
+              "b": "e4",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A10",
+              "a": "e1",
+              "b": "e4",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A11",
+              "a": "e7",
+              "b": "e4",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A12",
+              "a": "e6",
+              "b": "e3",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A13",
+              "a": "e6",
+              "b": "e1",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A14",
+              "a": "e7",
+              "b": "e2",
+              "ra": null,
+              "rb": null
+            }
+          ]
+        }
+      ],
       "eliminazione": null,
       "scadenze": {
         "gironi": "2026-12-10",
@@ -22,13 +164,424 @@
       },
       "numeroIscritti": 7,
       "avversari": 4,
-      "qualificati": 4
+      "qualificati": 4,
+      "formatoUsato": "campionato"
     },
     "pingpong": {
-      "fase": "iscrizioni",
+      "fase": "gironi",
       "formato": "gironi",
-      "iscritti": [],
-      "gironi": [],
+      "iscritti": [
+        {
+          "id": "e1",
+          "nome": "Maurizio Montemurro"
+        },
+        {
+          "id": "e2",
+          "nome": "Alessio Zheng"
+        },
+        {
+          "id": "e3",
+          "nome": "Michitos"
+        },
+        {
+          "id": "e4",
+          "nome": "Paolo Spinetti"
+        },
+        {
+          "id": "e5",
+          "nome": "The President"
+        },
+        {
+          "id": "e6",
+          "nome": "Fausto Zamparelli"
+        },
+        {
+          "id": "e7",
+          "nome": "Itsumi Shimizu"
+        },
+        {
+          "id": "e8",
+          "nome": "Vibhor Chaturvedi"
+        },
+        {
+          "id": "e9",
+          "nome": "Mo"
+        },
+        {
+          "id": "e10",
+          "nome": "Joel Ping Pong"
+        },
+        {
+          "id": "e11",
+          "nome": "Emanuele Clemente"
+        },
+        {
+          "id": "e12",
+          "nome": "Yashrajsinh Zala"
+        },
+        {
+          "id": "e13",
+          "nome": "Adri"
+        },
+        {
+          "id": "e14",
+          "nome": "Francesco"
+        },
+        {
+          "id": "e15",
+          "nome": "Raluca Teliban"
+        },
+        {
+          "id": "e16",
+          "nome": "Laxmi Narayan Ray"
+        },
+        {
+          "id": "e17",
+          "nome": "Sleem"
+        },
+        {
+          "id": "e18",
+          "nome": "Abdullah Abdullah"
+        },
+        {
+          "id": "e19",
+          "nome": "Bulzo"
+        },
+        {
+          "id": "e20",
+          "nome": "Azhan Ali"
+        }
+      ],
+      "gironi": [
+        {
+          "nome": "A",
+          "membri": [
+            "e1",
+            "e2",
+            "e3",
+            "e4",
+            "e5"
+          ],
+          "partite": [
+            {
+              "id": "A1",
+              "a": "e2",
+              "b": "e5",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A2",
+              "a": "e3",
+              "b": "e4",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A3",
+              "a": "e1",
+              "b": "e5",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A4",
+              "a": "e2",
+              "b": "e3",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A5",
+              "a": "e1",
+              "b": "e4",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A6",
+              "a": "e5",
+              "b": "e3",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A7",
+              "a": "e1",
+              "b": "e3",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A8",
+              "a": "e4",
+              "b": "e2",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A9",
+              "a": "e1",
+              "b": "e2",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A10",
+              "a": "e4",
+              "b": "e5",
+              "ra": null,
+              "rb": null
+            }
+          ]
+        },
+        {
+          "nome": "B",
+          "membri": [
+            "e6",
+            "e7",
+            "e8",
+            "e9",
+            "e10"
+          ],
+          "partite": [
+            {
+              "id": "B1",
+              "a": "e7",
+              "b": "e10",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B2",
+              "a": "e8",
+              "b": "e9",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B3",
+              "a": "e6",
+              "b": "e10",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B4",
+              "a": "e7",
+              "b": "e8",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B5",
+              "a": "e6",
+              "b": "e9",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B6",
+              "a": "e10",
+              "b": "e8",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B7",
+              "a": "e6",
+              "b": "e8",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B8",
+              "a": "e9",
+              "b": "e7",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B9",
+              "a": "e6",
+              "b": "e7",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B10",
+              "a": "e9",
+              "b": "e10",
+              "ra": null,
+              "rb": null
+            }
+          ]
+        },
+        {
+          "nome": "C",
+          "membri": [
+            "e11",
+            "e12",
+            "e13",
+            "e14",
+            "e15"
+          ],
+          "partite": [
+            {
+              "id": "C1",
+              "a": "e12",
+              "b": "e15",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C2",
+              "a": "e13",
+              "b": "e14",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C3",
+              "a": "e11",
+              "b": "e15",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C4",
+              "a": "e12",
+              "b": "e13",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C5",
+              "a": "e11",
+              "b": "e14",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C6",
+              "a": "e15",
+              "b": "e13",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C7",
+              "a": "e11",
+              "b": "e13",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C8",
+              "a": "e14",
+              "b": "e12",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C9",
+              "a": "e11",
+              "b": "e12",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C10",
+              "a": "e14",
+              "b": "e15",
+              "ra": null,
+              "rb": null
+            }
+          ]
+        },
+        {
+          "nome": "D",
+          "membri": [
+            "e16",
+            "e17",
+            "e18",
+            "e19",
+            "e20"
+          ],
+          "partite": [
+            {
+              "id": "D1",
+              "a": "e17",
+              "b": "e20",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D2",
+              "a": "e18",
+              "b": "e19",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D3",
+              "a": "e16",
+              "b": "e20",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D4",
+              "a": "e17",
+              "b": "e18",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D5",
+              "a": "e16",
+              "b": "e19",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D6",
+              "a": "e20",
+              "b": "e18",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D7",
+              "a": "e16",
+              "b": "e18",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D8",
+              "a": "e19",
+              "b": "e17",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D9",
+              "a": "e16",
+              "b": "e17",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D10",
+              "a": "e19",
+              "b": "e20",
+              "ra": null,
+              "rb": null
+            }
+          ]
+        }
+      ],
       "eliminazione": null,
       "scadenze": {
         "gironi": "2026-12-10",
@@ -36,7 +589,8 @@
       },
       "numeroIscritti": 20,
       "numGironi": 4,
-      "qualificati": 2
+      "qualificati": 2,
+      "formatoUsato": "gironi"
     },
     "scacchi": {
       "fase": "iscrizioni",

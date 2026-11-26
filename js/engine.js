@@ -314,7 +314,7 @@
     shuffle: shuffle, uid: uid,
     formaCoppie: formaCoppie,
     numeroGironi: numeroGironi,
-    sorteggiaGironi: sorteggiaGironi, sorteggiaCampionato: sorteggiaCampionato,
+    sorteggiaGironi: sorteggiaGironi, calendarioGirone: calendarioGirone, sorteggiaCampionato: sorteggiaCampionato,
     classifica: classifica,
     giocata: giocata,
     partiteMancanti: partiteMancanti,
