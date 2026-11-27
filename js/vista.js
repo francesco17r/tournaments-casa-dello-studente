@@ -5,7 +5,7 @@
 
   var META = {
     biliardino: { nome: 'Table football', colore: 'var(--biliardino)', formula: '2 vs 2', unita: 'games', descr: 'Teams of two. A match is best of 3 games, each game to 10 goals' },
-    pingpong: { nome: 'Ping pong', colore: 'var(--pingpong)', formula: '1 vs 1', unita: 'sets', descr: 'Singles. A match is best of 3 sets, each set to 11' },
+    pingpong: { nome: 'Ping pong', colore: 'var(--pingpong)', formula: '1 vs 1', unita: 'sets', descr: 'Singles. A match is best of 3 sets, each set to 21' },
     scacchi: { nome: 'Chess', colore: 'var(--scacchi)', formula: '1 vs 1', unita: 'points', descr: '15 minutes each + 10 seconds per move' }
   };
 
@@ -198,7 +198,7 @@
     } else {
       righe.push('One group. Everyone plays everyone.');
     }
-    righe.push('A match is best of 3 ' + (gioco === 'biliardino' ? 'games (each to 10 goals)' : 'sets (each to 11 points)') + '. A win is worth 1 point, a loss 0.');
+    righe.push('A match is best of 3 ' + (gioco === 'biliardino' ? 'games (each to 10 goals)' : 'sets (each to 21 points)') + '. A win is worth 1 point, a loss 0.');
     if (f === 'campionato') righe.push('The top ' + q + ' go through to the knockout stage.');
     else if (f === 'gironi') righe.push('The top ' + q + ' of each group go through to the knockout stage.');
     return '<div class="card stack"><h3>How this tournament works</h3><ul style="margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:4px">' +
