@@ -98,7 +98,7 @@
     return p.ra !== null && p.ra !== undefined && p.ra !== '' && p.rb !== null && p.rb !== undefined && p.rb !== '';
   }
 
-  // Punti in classifica: scacchi = punti partita (1, ½, 0); altri = 3 per vittoria.
+  // Punti in classifica: scacchi = somma dei punti di andata e ritorno (0–2); altri = 1 per vittoria.
   function puntiPartita(gioco, mio, suo) {
     if (gioco === 'scacchi') return mio;
     return mio > suo ? 1 : 0;
@@ -233,6 +233,7 @@
         var res = el.risultati[m.id] || {};
         m.ra = res.ra === undefined ? null : res.ra;
         m.rb = res.rb === undefined ? null : res.rb;
+        m.sp = res.sp || null; m.l1 = res.l1; m.l2 = res.l2;
         m.vincitore = undefined;
         if (m.definitaA && m.definitaB) {
           if (m.a && !m.b) { m.bye = true; m.vincitore = m.a; }
@@ -240,6 +241,8 @@
           else if (!m.a && !m.b) { m.bye = true; m.vincitore = null; }
           else if (giocata(m) && Number(m.ra) !== Number(m.rb)) {
             m.vincitore = Number(m.ra) > Number(m.rb) ? m.a : m.b;
+          } else if (giocata(m) && m.sp) {
+            m.vincitore = m.sp === 'a' ? m.a : m.b; // spareggio dopo parità
           }
         }
         m.pronta = m.definitaA && m.definitaB && m.a && m.b;

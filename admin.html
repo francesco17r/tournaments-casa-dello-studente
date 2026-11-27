@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
-<link rel="stylesheet" href="css/style.css?v=20261127a">
+<link rel="stylesheet" href="css/style.css?v=20261127b">
 <style>
   .match-edit { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; padding: 8px 0; border-top: 1px solid var(--line); }
   .match-edit:first-child { border-top: 0; }
@@ -50,8 +50,8 @@
   </div>
 </div>
 
-<script src="js/engine.js?v=20261127a"></script>
-<script src="js/vista.js?v=20261127a"></script>
+<script src="js/engine.js?v=20261127b"></script>
+<script src="js/vista.js?v=20261127b"></script>
 <script>
 (function () {
   'use strict';
@@ -317,19 +317,27 @@
   }
 
   function editPartita(k, p, n, rif, girone) {
-    var tie = T.giocata(p) && Number(p.ra) === Number(p.rb) && !(k === 'scacchi' && girone);
-    var inputs;
+    var tie = T.giocata(p) && Number(p.ra) === Number(p.rb) && !(k === 'scacchi' && (girone || p.sp));
+    var inputs, extra = '';
     if (k === 'scacchi') {
-      var val = T.giocata(p) ? p.ra + '-' + p.rb : '';
-      inputs = '<select data-ris-scacchi="' + rif + '" aria-label="Result">' +
-        opt('', '—', val) + opt('1-0', '1 – 0', val) + (girone ? opt('0.5-0.5', '½ – ½', val) : '') + opt('0-1', '0 – 1', val) + '</select>';
+      var gamba = function (leg, label) {
+        var val = p[leg] || '';
+        return '<label class="muted" style="font-size:.8rem">' + label + ' <select data-leg="' + rif + ':' + leg + '" aria-label="' + label + '">' +
+          opt('', '—', val) + opt('1-0', '1 – 0', val) + opt('0.5-0.5', '½ – ½', val) + opt('0-1', '0 – 1', val) + '</select></label>';
+      };
+      inputs = gamba('l1', '1st') + gamba('l2', '2nd');
+      if (!girone && T.giocata(p) && Number(p.ra) === Number(p.rb)) {
+        var sv = p.sp || '';
+        extra = '<div class="match-edit"><span class="a muted">Tiebreak winner</span><span class="inputs"><select data-sp="' + rif + '" aria-label="Tiebreak winner">' +
+          opt('', '—', sv) + opt('a', n[p.a], sv) + opt('b', n[p.b], sv) + '</select></span><span></span></div>';
+      }
     } else {
       inputs = '<input class="sc" type="number" min="0" max="2" inputmode="numeric" data-ris="' + rif + ':a" value="' + esc(p.ra === null ? '' : p.ra) + '" aria-label="Score ' + esc(n[p.a]) + '">' +
         '<span class="muted">–</span>' +
         '<input class="sc" type="number" min="0" max="2" inputmode="numeric" data-ris="' + rif + ':b" value="' + esc(p.rb === null ? '' : p.rb) + '" aria-label="Score ' + esc(n[p.b]) + '">';
     }
-    return '<div class="match-edit' + (tie ? ' tie' : '') + '"><span class="a">' + esc(n[p.a]) + '</span><span class="inputs">' + inputs + '</span><span>' + esc(n[p.b]) + '</span></div>' +
-      (tie ? '<p class="notice err" style="margin:0 0 6px">A draw is not possible here: correct the score.</p>' : '') +
+    return '<div class="match-edit' + (tie ? ' tie' : '') + '"><span class="a">' + esc(n[p.a]) + '</span><span class="inputs">' + inputs + '</span><span>' + esc(n[p.b]) + '</span></div>' + extra +
+      (tie ? '<p class="notice err" style="margin:0 0 6px">' + (k === 'scacchi' ? 'Level after two games: choose the tiebreak winner.' : 'A draw is not possible here: correct the score.') + '</p>' : '') +
       (k !== 'scacchi' && T.giocata(p) && Math.max(Number(p.ra), Number(p.rb)) !== 2 ? '<p class="notice err" style="margin:0 0 6px">Best of 3: the winner must have 2.</p>' : '');
   }
 
@@ -425,10 +433,20 @@
       m[lato === 'a' ? 'ra' : 'rb'] = el.value === '' ? null : Number(el.value);
       segnaModifica(); return render();
     }
-    if (el.dataset.risScacchi) {
-      var mm = trovaPartita(k, el.dataset.risScacchi);
-      if (!el.value) { mm.ra = null; mm.rb = null; }
-      else { var v = el.value.split('-'); mm.ra = Number(v[0]); mm.rb = Number(v[1]); }
+    if (el.dataset.leg) {
+      var q1 = el.dataset.leg.split(':'), leg = q1.pop();
+      var mm = trovaPartita(k, q1.join(':'));
+      if (el.value) mm[leg] = el.value; else delete mm[leg];
+      if (mm.l1 && mm.l2) {
+        var a1 = mm.l1.split('-'), a2 = mm.l2.split('-');
+        mm.ra = Number(a1[0]) + Number(a2[0]); mm.rb = Number(a1[1]) + Number(a2[1]);
+      } else { mm.ra = null; mm.rb = null; }
+      if (mm.ra === null || mm.ra !== mm.rb) delete mm.sp;
+      segnaModifica(); return render();
+    }
+    if (el.dataset.sp) {
+      var ms = trovaPartita(k, el.dataset.sp);
+      if (el.value) ms.sp = el.value; else delete ms.sp;
       segnaModifica(); return render();
     }
     if (el.dataset.scadEl) {

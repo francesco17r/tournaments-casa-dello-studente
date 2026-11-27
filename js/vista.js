@@ -6,7 +6,7 @@
   var META = {
     biliardino: { nome: 'Table football', colore: 'var(--biliardino)', formula: '2 vs 2', unita: 'games', descr: 'Teams of two. A match is best of 3 games, each game to 10 goals' },
     pingpong: { nome: 'Ping pong', colore: 'var(--pingpong)', formula: '1 vs 1', unita: 'sets', descr: 'Singles. A match is best of 3 sets, each set to 21' },
-    scacchi: { nome: 'Chess', colore: 'var(--scacchi)', formula: '1 vs 1', unita: 'points', descr: '15 minutes each + 10 seconds per move' }
+    scacchi: { nome: 'Chess', colore: 'var(--scacchi)', formula: '1 vs 1', unita: 'points', descr: 'Singles. A match is two games, one with white and one with black, 10 minutes + 1 second per move' }
   };
 
   function esc(s) {
@@ -28,7 +28,7 @@
   }
 
   function fmtRis(gioco, v) {
-    if (gioco === 'scacchi') return Number(v) === 0.5 ? '½' : String(v);
+    if (gioco === 'scacchi') return fmtPunti(Number(v));
     return String(v);
   }
 
@@ -186,6 +186,16 @@
     return '';
   }
 
+  // " of 5" oppure " (2 of 4 players, 2 of 5)" a seconda delle dimensioni dei gironi.
+  function dimGironi(g, n, ng) {
+    var dim = (g.gironi && g.gironi.length) ? g.gironi.map(function (gr) { return gr.membri.length; }) : [];
+    if (!dim.length) { for (var i = 0; i < ng; i++) dim.push(0); for (var j = 0; j < n; j++) dim[j % ng]++; }
+    var conta = {}; dim.forEach(function (d) { conta[d] = (conta[d] || 0) + 1; });
+    var k = Object.keys(conta).sort();
+    if (k.length === 1) return ' of ' + k[0];
+    return ' (' + k.map(function (d) { return conta[d] + ' of ' + d; }).join(', ') + ')';
+  }
+
   function formatoCard(gioco, g) {
     var f = formatoEffettivo(g), q = qualificatiDi(g), u = unitaIscritti(gioco), n = numIscritti(g);
     var righe = [];
@@ -194,13 +204,18 @@
       righe.push('Each team plays ' + (g.avversari || 4) + ' matches against opponents drawn at random by the organiser.');
     } else if (f === 'gironi') {
       var ng = g.numGironi || T.numeroGironi(n, f);
-      righe.push(ng + ' groups' + (n % ng === 0 ? ' of ' + (n / ng) : '') + '. Everyone plays everyone in their own group.');
+      righe.push(ng + ' groups' + dimGironi(g, n, ng) + '. Everyone plays everyone in their own group.');
     } else {
       righe.push('One group. Everyone plays everyone.');
     }
-    righe.push('A match is best of 3 ' + (gioco === 'biliardino' ? 'games (each to 10 goals)' : 'sets (each to 21 points)') + '. A win is worth 1 point, a loss 0.');
+    if (gioco === 'scacchi') {
+      righe.push('A match is two games, one with white and one with black. Each game: a win is worth 1 point, a draw ½, a loss 0. So a match is worth 0 to 2 points.');
+    } else {
+      righe.push('A match is best of 3 ' + (gioco === 'biliardino' ? 'games (each to 10 goals)' : 'sets (each to 21 points)') + '. A win is worth 1 point, a loss 0.');
+    }
     if (f === 'campionato') righe.push('The top ' + q + ' go through to the knockout stage.');
     else if (f === 'gironi') righe.push('The top ' + q + ' of each group go through to the knockout stage.');
+    if (gioco === 'scacchi' && f !== 'girone-unico') righe.push('In the knockout stage, if the two games end level, a tiebreak game decides who goes through.');
     return '<div class="card stack"><h3>How this tournament works</h3><ul style="margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:4px">' +
       righe.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul></div>';
   }
