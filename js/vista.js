@@ -251,6 +251,29 @@
       righe.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul></div>';
   }
 
+  function ordinale(k) { return k + (k === 1 ? 'st' : k === 2 ? 'nd' : k === 3 ? 'rd' : 'th'); }
+
+  // Tabellone con i posti ancora da decidere ("1st Group A"), mostrato durante i gironi.
+  function anteprimaHtml(gioco, g, dati) {
+    if (formatoEffettivo(g) === 'girone-unico') return '';
+    var el = T.anteprimaEliminazione(g.gironi, qualificatiDi(g));
+    if (!el) return '';
+    var etichette = {};
+    el.primoTurno.forEach(function (c) {
+      c.forEach(function (id) {
+        if (!id) return;
+        var m = /^(\d+)(.*)$/.exec(id);
+        etichette[id] = ordinale(Number(m[1])) + (m[2] ? ' Group ' + m[2] : ' in the league');
+      });
+    });
+    var cal = (dati && dati.calendario) || {};
+    var nt = T.turniEliminazione(el).length;
+    var scad = cal.finali ? T.scadenzeEliminazione((g.scadenze && g.scadenze.gironi) || cal.fineGironi, cal.finali, nt) : [];
+    return '<section class="stack"><div class="stack" style="gap:4px"><h3>Knockout stage (preview)</h3>' +
+      '<p class="muted">This is how the bracket will look. The names are filled in when the group stage ends.</p></div>' +
+      '<div class="preview">' + tabelloneHtml(gioco, { eliminazione: el, scadenze: { eliminazione: scad } }, etichette) + '</div></section>';
+  }
+
   function giocoHtml(gioco, g, dati) {
     var meta = META[gioco], n = nomi(g), stato = statoGioco(gioco, g, dati);
     var h = '<div class="stack-lg" style="--c:' + meta.colore + '">';
@@ -298,6 +321,7 @@
         '<p class="muted">Matches can be played in any order' + (g.scadenze && g.scadenze.gironi ? ', all by ' + esc(T.dataLunga(g.scadenze.gironi)) : '') + '.' +
         (formatoEffettivo(g) === 'girone-unico' ? '' : ' The top ' + qualificatiDi(g) + (unico ? '' : ' of each group') + ' go through to the knockout stage.') + '</p></div>' +
         gironiHtml(gioco, g, n) + '</section>';
+      h += anteprimaHtml(gioco, g, dati);
     }
     return h + '</div>';
   }

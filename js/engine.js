@@ -177,9 +177,50 @@
 
   // Dai gironi: i primi "q" di ogni girone. Girone unico: teste di serie in ordine di classifica.
   // Più gironi (q = 2): primi e secondi, senza scontri dello stesso girone al primo turno.
+  // Schema fisso del primo turno con più gironi (numero di gironi potenza di 2, primi 2 di ogni girone):
+  // metà alta 1°A–2°B, 1°C–2°D…; metà bassa 1°B–2°A, 1°D–2°C… Così due dello stesso girone
+  // si possono incontrare solo in finale. Ritorna coppie di { girone, pos } oppure null.
+  function schemaGironi(nomi, q) {
+    var ng = nomi.length;
+    if (ng < 2 || q !== 2 || (ng & (ng - 1)) !== 0) return null;
+    var alta = [], bassa = [];
+    for (var i = 0; i < ng; i += 2) {
+      alta.push([{ girone: nomi[i], pos: 1 }, { girone: nomi[i + 1], pos: 2 }]);
+      bassa.push([{ girone: nomi[i + 1], pos: 1 }, { girone: nomi[i], pos: 2 }]);
+    }
+    return alta.concat(bassa);
+  }
+
+  // Anteprima del tabellone prima della fine dei gironi: gli id sono etichette tipo "1A" (1° del girone A) o "3" (3° classificato).
+  function anteprimaEliminazione(gironi, q) {
+    q = q || 2;
+    if (!gironi || !gironi.length) return null;
+    var pt = [];
+    if (gironi.length === 1) {
+      var size = 1; while (size < q) size *= 2;
+      var posti = ordineTeste(size).map(function (sd) { return sd <= q ? String(sd) : null; });
+      for (var k = 0; k < posti.length; k += 2) pt.push([posti[k], posti[k + 1]]);
+      return { primoTurno: pt, risultati: {} };
+    }
+    var sc = schemaGironi(gironi.map(function (g) { return g.nome; }), q);
+    if (!sc) return null;
+    return { primoTurno: sc.map(function (c) { return [c[0].pos + c[0].girone, c[1].pos + c[1].girone]; }), risultati: {} };
+  }
+
   function creaEliminazione(gioco, gironi, q) {
     q = q || 2;
     var size, posti, migliore;
+    var schema = gironi.length > 1 ? schemaGironi(gironi.map(function (g) { return g.nome; }), q) : null;
+    if (schema) {
+      var cls = {};
+      gironi.forEach(function (g) { cls[g.nome] = classifica(gioco, g); });
+      return {
+        primoTurno: schema.map(function (c) {
+          return c.map(function (x) { var r = cls[x.girone][x.pos - 1]; return r ? r.id : null; });
+        }),
+        risultati: {}
+      };
+    }
     if (gironi.length === 1) {
       var cl = classifica(gioco, gironi[0]).slice(0, q).map(function (r) { return r.id; });
       size = 1; while (size < cl.length) size *= 2;
@@ -324,7 +365,7 @@
     formaCoppie: formaCoppie,
     numeroGironi: numeroGironi,
     sorteggiaGironi: sorteggiaGironi, calendarioGirone: calendarioGirone, sorteggiaCampionato: sorteggiaCampionato,
-    classifica: classifica,
+    classifica: classifica, anteprimaEliminazione: anteprimaEliminazione,
     giocata: giocata,
     partiteMancanti: partiteMancanti,
     creaEliminazione: creaEliminazione,
