@@ -120,6 +120,8 @@
         '<span class="chip' + (mancano ? '' : ' ok') + '">' + (mancano ? mancano + ' to play' : 'Complete') + '</span></div>' +
         tabellaClassifica(gioco, gr, n, qual) +
         listaPartite(gioco, gr.partite, n, g.scadenze && g.scadenze.gironi) +
+        (gr.bye && gr.bye.length ? '<p class="muted" style="font-size:.85rem;margin:0">Bye: ' + gr.bye.map(function (id) { return esc(n[id]); }).join(', ') +
+          ' (counts as a match won' + (gioco === 'scacchi' ? ', 2 points' : '') + ')</p>' : '') +
         '</section>';
     });
     return h + '</div>';
@@ -204,7 +206,12 @@
       righe.push('Each team plays ' + (g.avversari || 4) + ' matches against opponents drawn at random by the organiser.');
     } else if (f === 'gironi') {
       var ng = g.numGironi || T.numeroGironi(n, f);
-      righe.push(ng + ' groups' + dimGironi(g, n, ng) + '. Everyone plays everyone in their own group.');
+      if (gioco === 'scacchi') {
+        righe.push(ng + ' groups' + dimGironi(g, n, ng) + ', drawn at random. Everyone plays 3 matches against players of their own group.');
+        righe.push('In the groups of 5 the numbers don\'t add up, so one player (the first to sign up) plays 2 matches and gets a bye, which counts as a match won (2 points).');
+      } else {
+        righe.push(ng + ' groups' + dimGironi(g, n, ng) + '. Everyone plays everyone in their own group.');
+      }
     } else {
       righe.push('One group. Everyone plays everyone.');
     }

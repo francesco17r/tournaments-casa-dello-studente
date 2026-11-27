@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-27T02:46:00+01:00",
+  "aggiornato": "2026-11-27T02:07:05.664Z",
   "linkIscrizioni": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=K3EXCvNtXUKAjjCd8ope63cGdEtNxKZCnbk3gRao-mRUMloyRUhGWDNINkJJWU9HQlI2Sk80RlkxNS4u",
   "contatto": "Francesco Ram (residents' representative)",
   "calendario": {
@@ -593,16 +593,327 @@
       "formatoUsato": "gironi"
     },
     "scacchi": {
-      "fase": "iscrizioni",
-      "formato": "automatico",
-      "iscritti": [],
-      "gironi": [],
+      "fase": "gironi",
+      "formato": "gironi",
+      "iscritti": [
+        {
+          "id": "e1",
+          "nome": "Arya Torabi"
+        },
+        {
+          "id": "e2",
+          "nome": "Maurizio Montemurro"
+        },
+        {
+          "id": "e3",
+          "nome": "I terroni"
+        },
+        {
+          "id": "e4",
+          "nome": "Il Terremotato"
+        },
+        {
+          "id": "e5",
+          "nome": "sina mroadi"
+        },
+        {
+          "id": "e6",
+          "nome": "Alessio Zheng"
+        },
+        {
+          "id": "e7",
+          "nome": "La gang del Cromosoma"
+        },
+        {
+          "id": "e8",
+          "nome": "Vladyslav Nikulchenko"
+        },
+        {
+          "id": "e9",
+          "nome": "Joel Chess"
+        },
+        {
+          "id": "e10",
+          "nome": "Aleksandar Vladimirov Androvski"
+        },
+        {
+          "id": "e11",
+          "nome": "Francesco De Caro"
+        },
+        {
+          "id": "e12",
+          "nome": "Vlada"
+        },
+        {
+          "id": "e13",
+          "nome": "fausto"
+        },
+        {
+          "id": "e14",
+          "nome": "Sonila"
+        },
+        {
+          "id": "e15",
+          "nome": "Joan Riccio"
+        },
+        {
+          "id": "e16",
+          "nome": "Vippy"
+        },
+        {
+          "id": "e17",
+          "nome": "Alessandro Lucchi"
+        },
+        {
+          "id": "e18",
+          "nome": "Armen Zuna"
+        }
+      ],
+      "gironi": [
+        {
+          "nome": "A",
+          "membri": [
+            "e1",
+            "e3",
+            "e8",
+            "e18",
+            "e4"
+          ],
+          "bye": [
+            "e8"
+          ],
+          "partite": [
+            {
+              "id": "A1",
+              "a": "e1",
+              "b": "e4",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A2",
+              "a": "e3",
+              "b": "e8",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A3",
+              "a": "e1",
+              "b": "e18",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A4",
+              "a": "e4",
+              "b": "e8",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A5",
+              "a": "e18",
+              "b": "e3",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A6",
+              "a": "e1",
+              "b": "e3",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "A7",
+              "a": "e18",
+              "b": "e4",
+              "ra": null,
+              "rb": null
+            }
+          ]
+        },
+        {
+          "nome": "B",
+          "membri": [
+            "e10",
+            "e9",
+            "e6",
+            "e12",
+            "e13"
+          ],
+          "bye": [
+            "e12"
+          ],
+          "partite": [
+            {
+              "id": "B1",
+              "a": "e9",
+              "b": "e13",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B2",
+              "a": "e9",
+              "b": "e6",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B3",
+              "a": "e10",
+              "b": "e12",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B4",
+              "a": "e13",
+              "b": "e6",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B5",
+              "a": "e10",
+              "b": "e6",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B6",
+              "a": "e10",
+              "b": "e9",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "B7",
+              "a": "e12",
+              "b": "e13",
+              "ra": null,
+              "rb": null
+            }
+          ]
+        },
+        {
+          "nome": "C",
+          "membri": [
+            "e11",
+            "e15",
+            "e5",
+            "e7"
+          ],
+          "partite": [
+            {
+              "id": "C1",
+              "a": "e11",
+              "b": "e7",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C2",
+              "a": "e15",
+              "b": "e5",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C3",
+              "a": "e11",
+              "b": "e5",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C4",
+              "a": "e7",
+              "b": "e15",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C5",
+              "a": "e11",
+              "b": "e15",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "C6",
+              "a": "e5",
+              "b": "e7",
+              "ra": null,
+              "rb": null
+            }
+          ]
+        },
+        {
+          "nome": "D",
+          "membri": [
+            "e14",
+            "e17",
+            "e2",
+            "e16"
+          ],
+          "partite": [
+            {
+              "id": "D1",
+              "a": "e14",
+              "b": "e16",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D2",
+              "a": "e17",
+              "b": "e2",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D3",
+              "a": "e14",
+              "b": "e2",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D4",
+              "a": "e16",
+              "b": "e17",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D5",
+              "a": "e14",
+              "b": "e17",
+              "ra": null,
+              "rb": null
+            },
+            {
+              "id": "D6",
+              "a": "e2",
+              "b": "e16",
+              "ra": null,
+              "rb": null
+            }
+          ]
+        }
+      ],
       "eliminazione": null,
       "scadenze": {
         "gironi": "2026-12-10",
         "eliminazione": []
       },
-      "numeroIscritti": 18
+      "numeroIscritti": 18,
+      "formatoUsato": "gironi",
+      "numGironi": 4,
+      "qualificati": 2
     }
   }
 }

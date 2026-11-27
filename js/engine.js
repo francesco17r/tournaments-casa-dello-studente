@@ -119,6 +119,12 @@
         r.punti += puntiPartita(gioco, x[1], x[2]);
       });
     });
+    // Bye (girone in cui non tutti possono giocare lo stesso numero di incontri): vale come incontro vinto.
+    (girone.bye || []).forEach(function (id) {
+      var r = righe[id]; if (!r) return;
+      var vinti = gioco === 'scacchi' ? 2 : 1;
+      r.g++; r.v++; r.fatti += vinti; r.punti += gioco === 'scacchi' ? 2 : 1;
+    });
     var lista = Object.keys(righe).map(function (k) { return righe[k]; });
 
     function scontroDiretto(a, b) {
