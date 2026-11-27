@@ -185,6 +185,30 @@
         '<path d="M205 104 Q 255 40 345 70" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-dasharray="5 6"/>' +
         '<circle cx="345" cy="70" r="7" fill="#ffb454"/></svg>';
     }
+    if (gioco === 'scacchi') {
+      var q = '';
+      for (var r = 0; r < 4; r++) for (var c = 0; c < 15; c++) {
+        q += '<rect x="' + (c * 40) + '" y="' + (r * 40) + '" width="40" height="40" fill="' + ((r + c) % 2 ? '#b58863' : '#f0d9b5') + '"/>';
+      }
+      var pezzo = function (tipo, col, riga, bianco) {
+        var x = col * 40 + 20, y = riga * 40 + 20;
+        var f = bianco ? '#fafafa' : '#23262b', st = bianco ? '#2b2b2b' : '#f5f5f5';
+        var a = ' fill="' + f + '" stroke="' + st + '" stroke-width="1.6" stroke-linejoin="round"';
+        var base = '<rect x="' + (x - 12) + '" y="' + (y + 11) + '" width="24" height="6" rx="2"' + a + '/>';
+        if (tipo === 'p') return '<path d="M' + (x - 9) + ' ' + (y + 12) + ' L' + (x + 9) + ' ' + (y + 12) + ' L' + (x + 4) + ' ' + (y - 2) + ' L' + (x - 4) + ' ' + (y - 2) + ' Z"' + a + '/>' +
+          '<circle cx="' + x + '" cy="' + (y - 7) + '" r="6"' + a + '/>' + base;
+        if (tipo === 't') return '<path d="M' + (x - 9) + ' ' + (y + 12) + ' L' + (x + 9) + ' ' + (y + 12) + ' L' + (x + 7) + ' ' + (y - 6) + ' L' + (x + 10) + ' ' + (y - 6) + ' L' + (x + 10) + ' ' + (y - 14) +
+          ' L' + (x + 5) + ' ' + (y - 14) + ' L' + (x + 5) + ' ' + (y - 10) + ' L' + (x + 2) + ' ' + (y - 10) + ' L' + (x + 2) + ' ' + (y - 14) + ' L' + (x - 2) + ' ' + (y - 14) + ' L' + (x - 2) + ' ' + (y - 10) +
+          ' L' + (x - 5) + ' ' + (y - 10) + ' L' + (x - 5) + ' ' + (y - 14) + ' L' + (x - 10) + ' ' + (y - 14) + ' L' + (x - 10) + ' ' + (y - 6) + ' L' + (x - 7) + ' ' + (y - 6) + ' Z"' + a + '/>' + base;
+        // re
+        return '<path d="M' + (x - 10) + ' ' + (y + 12) + ' L' + (x + 10) + ' ' + (y + 12) + ' L' + (x + 7) + ' ' + (y - 5) + ' L' + (x - 7) + ' ' + (y - 5) + ' Z"' + a + '/>' +
+          '<ellipse cx="' + x + '" cy="' + (y - 7) + '" rx="9" ry="4"' + a + '/>' +
+          '<path d="M' + (x - 2) + ' ' + (y - 21) + ' h4 v4 h4 v4 h-4 v4 h-4 v-4 h-4 v-4 h4 Z"' + a + '/>' + base;
+      };
+      var pezzi = pezzo('k', 3, 2, true) + pezzo('t', 1, 2, true) + pezzo('p', 2, 1, true) + pezzo('p', 4, 1, true) + pezzo('p', 6, 1, true) +
+        pezzo('k', 11, 1, false) + pezzo('t', 13, 1, false) + pezzo('p', 8, 2, false) + pezzo('p', 10, 2, false) + pezzo('p', 12, 2, false);
+      return '<svg class="' + cls + '" viewBox="0 0 600 160" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Chess board with pieces">' + q + pezzi + '</svg>';
+    }
     return '';
   }
 
