@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
-<link rel="stylesheet" href="css/style.css?v=20261127e">
+<link rel="stylesheet" href="css/style.css?v=20261128a">
 <style>
   .match-edit { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; padding: 8px 0; border-top: 1px solid var(--line); }
   .match-edit:first-child { border-top: 0; }
@@ -35,6 +35,7 @@
     <a href="#biliardino" data-tab="biliardino" style="--tab-color:var(--biliardino)">Table football</a>
     <a href="#pingpong" data-tab="pingpong" style="--tab-color:var(--pingpong)">Ping pong</a>
     <a href="#scacchi" data-tab="scacchi" style="--tab-color:var(--scacchi)">Chess</a>
+    <a href="#giocatori" data-tab="giocatori">Players</a>
   </div>
 </nav>
 <main class="wrap">
@@ -50,8 +51,8 @@
   </div>
 </div>
 
-<script src="js/engine.js?v=20261127e"></script>
-<script src="js/vista.js?v=20261127e"></script>
+<script src="js/engine.js?v=20261128a"></script>
+<script src="js/vista.js?v=20261128a"></script>
 <script>
 (function () {
   'use strict';
@@ -154,13 +155,56 @@
   /* ---------- Views ---------- */
   function render() {
     var tab = (location.hash || '#impostazioni').slice(1);
-    if (['impostazioni'].concat(T.GIOCHI).indexOf(tab) < 0) tab = 'impostazioni';
+    if (['impostazioni', 'giocatori'].concat(T.GIOCHI).indexOf(tab) < 0) tab = 'impostazioni';
     document.querySelectorAll('nav.tabs a').forEach(function (a) {
       if (a.dataset.tab === tab) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
     if (!dati) return renderImpostazioni(true);
     if (tab === 'impostazioni') renderImpostazioni(false);
+    else if (tab === 'giocatori') renderGiocatori();
     else renderGioco(tab);
+  }
+
+  /* ---------- Players and contacts (kept only in this browser, never saved to GitHub) ---------- */
+  function contatti() { try { return JSON.parse(leggi('tornei.contatti') || 'null'); } catch (e) { return null; } }
+
+  function linkTel(t) {
+    if (!t) return '<span class="muted">no number</span>';
+    var cifre = String(t).replace(/[^0-9]/g, '');
+    return '<a href="https://wa.me/' + cifre + '" target="_blank" rel="noopener">WhatsApp</a> · <a href="tel:+' + cifre + '">' + esc(t) + '</a>';
+  }
+
+  function renderGiocatori() {
+    var c = contatti();
+    var h = '<div class="stack-lg"><section class="card stack"><h2>Players and contacts</h2>' +
+      '<p class="muted">Real names and phone numbers stay in this browser only. They are never saved to GitHub, because the repository is public.</p>' +
+      '<div class="row"><label class="btn" style="cursor:pointer">' + (c ? 'Load a new contacts file' : 'Load contacts file') +
+      '<input id="file-contatti" type="file" accept=".json,application/json" style="display:none"></label>' +
+      (c ? '<button type="button" data-azione="togli-contatti">Remove from this browser</button>' : '') + '</div>' +
+      (avviso.contatti ? '<p class="notice err">' + esc(avviso.contatti) + '</p>' : '') +
+      (c ? '<p class="muted" style="font-size:.85rem">File from ' + esc(c.aggiornato || '?') + '.</p>' : '') + '</section>';
+    if (c) {
+      T.GIOCHI.forEach(function (k) {
+        var lista = (c.giochi && c.giochi[k]) || [];
+        var perNome = {}; lista.forEach(function (x) { perNome[x.nome] = x; });
+        var sulSito = (dati.giochi[k].iscritti || []).map(function (e) { return e.nome; }).sort(function (a, b) { return a.localeCompare(b); });
+        h += '<section class="card stack" style="--c:' + V.META[k].colore + '"><div class="row"><span class="dot"></span><h3>' + esc(V.META[k].nome) + ' (' + sulSito.length + ')</h3></div>' +
+          '<ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">';
+        sulSito.forEach(function (nome) {
+          var x = perNome[nome];
+          h += '<li style="padding:10px 0;border-top:1px solid var(--line)"><strong>' + esc(nome) + '</strong>';
+          if (!x) h += '<div class="muted">Not in the contacts file</div>';
+          else x.giocatori.forEach(function (gc) {
+            h += '<div style="margin-top:4px">' + esc(gc.nome) + (gc.nota ? ' <span class="muted">(' + esc(gc.nota) + ')</span>' : '') +
+              '<br><span style="font-size:.9rem">' + linkTel(gc.tel) + '</span>' +
+              (gc.email ? '<br><a class="muted" style="font-size:.85rem" href="mailto:' + esc(gc.email) + '">' + esc(gc.email) + '</a>' : '') + '</div>';
+          });
+          h += '</li>';
+        });
+        h += '</ul></section>';
+      });
+    }
+    document.getElementById('view').innerHTML = h + '</div>';
   }
 
   function renderImpostazioni(soloCollegamento) {
@@ -396,6 +440,7 @@
       scrivi('tornei.owner', cfg.owner); scrivi('tornei.repo', cfg.repo); scrivi('tornei.branch', cfg.branch); scrivi('tornei.token', cfg.token || null);
       stato('Reloading…'); return carica();
     }
+    if (a === 'togli-contatti') { scrivi('tornei.contatti', null); delete avviso.contatti; return render(); }
     if (a === 'scollega') { cfg.token = ''; scrivi('tornei.token', null); stato('Key removed', 'warn'); document.getElementById('salva').disabled = true; return render(); }
     if (a === 'riprendi-bozza') { dati = avviso.bozza.dati; delete avviso.bozza; segnaModifica(); return render(); }
     if (a === 'scarta-bozza') { delete avviso.bozza; scrivi('tornei.bozza', null); return render(); }
@@ -457,6 +502,20 @@
     if (el.id.indexOf('scad-gironi-') === 0) { dati.giochi[el.id.slice(12)].scadenze.gironi = el.value; return segnaModifica(); }
     if (el.id.indexOf('cal-') === 0) { dati.calendario[el.id.slice(4)] = el.value; return segnaModifica(); }
     if (el.id.indexOf('gen-') === 0) { dati[el.id.slice(4)] = el.value.trim(); return segnaModifica(); }
+  });
+
+  document.addEventListener('change', function (ev) {
+    if (ev.target.id !== 'file-contatti' || !ev.target.files[0]) return;
+    var r = new FileReader();
+    r.onload = function () {
+      try {
+        var c = JSON.parse(r.result);
+        if (!c.giochi) throw new Error('wrong file');
+        scrivi('tornei.contatti', JSON.stringify(c)); delete avviso.contatti;
+      } catch (e) { avviso.contatti = 'This is not the contacts file.'; }
+      render();
+    };
+    r.readAsText(ev.target.files[0]);
   });
 
   document.getElementById('salva').addEventListener('click', salva);
