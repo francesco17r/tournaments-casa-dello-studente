@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-28T14:53:55.975Z",
+  "aggiornato": "2026-11-28T15:23:09.275Z",
   "linkIscrizioni": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=K3EXCvNtXUKAjjCd8ope63cGdEtNxKZCnbk3gRao-mRUMloyRUhGWDNINkJJWU9HQlI2Sk80RlkxNS4u",
   "contatto": "Francesco Ram (residents' representative)",
   "calendario": {
@@ -473,8 +473,8 @@
               "id": "C7",
               "a": "e2",
               "b": "e9",
-              "ra": null,
-              "rb": null
+              "ra": 2,
+              "rb": 0
             },
             {
               "id": "C8",
